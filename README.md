@@ -1,2 +1,2 @@
-# Tabacaria_Changs
-Tabacaria Changs é o Projeto Integrador do Curso Programador Java de 2026.
+# Tabacaria Chang's
+Tabacaria Chang's é o Projeto Integrador do Curso Programador Java de 2026.
