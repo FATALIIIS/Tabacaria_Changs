@@ -1,5 +1,7 @@
 package com.tabacariachang.site.model;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -69,6 +71,11 @@ public class Administrador {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	public void criptografa() {
+		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+		this.senha=encoder.encode(this.senha);
 	}
 	
 }
