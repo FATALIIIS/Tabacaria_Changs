@@ -1,5 +1,6 @@
 package com.tabacariachang.site.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -18,7 +19,7 @@ public class Pedidos {
 	private Integer codPed;
 	
 	@Column(name = "valor",nullable = false, precision = 4, scale = 2)
-	private double valor;
+	private BigDecimal valor;
 	
 	@Column(name = "data",nullable = false)
 	private LocalDate data;
@@ -38,14 +39,6 @@ public class Pedidos {
 		this.codPed = codPed;
 	}
 
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
 	public LocalDate getData() {
 		return data;
 	}
@@ -60,6 +53,14 @@ public class Pedidos {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 	
 	

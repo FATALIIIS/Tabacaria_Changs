@@ -23,6 +23,7 @@ public class TabacariachangApplication {
 				administrador.setNome("Sr Wong");
 				administrador.setUsuario("admin");
 				administrador.setSenha("admin");
+				administrador.setCpf("10020099955");
 				administrador.criptografa();
 				repository.save(administrador);
 			}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<form th:action="@{/produtos/cadastrar}" th:object="${produtos}" method="post" id="formulario" enctype="multipart/form-data">
+			<h1>Cadastrar Produtos</h1>
+			<label for="nome">Nome do Produto:</label><br>
+			<input type="text" th:field="*{nome}" size="50" max="50" required><br>
+			<label for="descricao">Descrição:</label><br>
+			<textarea th:field="*{descricao}" cols="100" rows="4" maxlength="600"></textarea><br>
+			<label for="preco">Preço Unitário:</label><br>
+			R$<input type="number" th:field="*{valor}" min="0.01" max="9999.99" step="0.01" required><br>
+			<label for="quantidade">Quantidade:</label><br>
+			<input type="number" th:field="*{quantidade}" min="0" max="9999" step="1" required><br>
+			<label for="foto">Foto do Produto:</label><br>
+			<input type="file" id="imagem" name="imagem" accept="png,jpg,jpeg,bmp,gif" required><br>
+			<button type="submit">Cadastrar</button>	
+		</form>
+		<section th:if="${resposta!=null}">
+			<h2 th:text="${resposta}">resposta</h2>
+		</section>
+	</body>
+</html>

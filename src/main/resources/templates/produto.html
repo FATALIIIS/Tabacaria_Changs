@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<section>
+			<div th:if="${produto!=null}" class="produto">
+				<h1 th:text="${produto.nome}">Nome</h1>
+				<p>
+					<img th:if="${produto.foto!=null}" th:src="@{/produto/foto/{id}(id=${produto.codPro})}" alt="Foto do Produto" style="width: auto;height: auto;
+					max-width: 70%;max-height: 70%">
+					<span th:unless="${produto.foto!=null}">Sem foto</span>
+				</p>
+				<p>Codigo:<span th:text="${produto.codPro}">código</span></p>
+				<p>Fabricante:<span th:text="${produto.fabricante.nome}">fab</span></p>
+				<p>Preço R$:<span th:text="${produto.preco}">0.00</span></p>
+				<p>Quantidade:<span th:text="${produto.quantidade}">0</span></p>
+				<p><span th:text="${produto.descricao}">descrição</span></p>
+			</div>
+		</section>
+	</body>
+</html>

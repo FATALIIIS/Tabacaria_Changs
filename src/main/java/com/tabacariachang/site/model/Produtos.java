@@ -1,5 +1,6 @@
 package com.tabacariachang.site.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -32,8 +33,8 @@ public class Produtos {
 	@Column(name = "nome",nullable = false, length = 50)
 	private String nome;
 	
-	@Column(name = "valor",nullable = false, precision = 4, scale = 2)
-	private double valor;
+	@Column(name = "valor", precision = 4, scale = 2)
+	private BigDecimal valor;
 	
 	@Column(name = "imagem",nullable = false, columnDefinition = "bytea")
 	private byte[] imagem;
@@ -93,14 +94,6 @@ public class Produtos {
 		this.nome = nome;
 	}
 
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
 	public byte[] getImagem() {
 		return imagem;
 	}
@@ -115,6 +108,14 @@ public class Produtos {
 
 	public void setDataFabric(LocalDate dataFabric) {
 		this.dataFabric = dataFabric;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 	
 	

@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -16,10 +17,10 @@ public class Itens {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codItem;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "codPed")
 	private Pedidos pedidos;
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "codProd")
 	private Produtos produtos;
 	
