@@ -1,0 +1,15 @@
+*{
+	margin:0px;
+	padding: 0px;
+	font-family: Arial Narrow Bold Italic;
+	
+}
+:root{
+	--botao:rgb(255, 128, 64);
+	--destaque: rgb(128, 128, 64);
+	--letrabotao:rgb(64, 0, 64);
+	--fundo: rgb(0, 0, 0);
+	--titulo:rgb(255, 255, 255);
+	--letra:#F2F2F2;
+	--fonte:"Arial Narrow Bold Italic.",sans-serif;
+}
