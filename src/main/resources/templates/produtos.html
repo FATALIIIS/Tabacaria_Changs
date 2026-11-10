@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<section>
+			<div th:if="${produtos!=null}" class="produtos">
+				<h1 th:text="${produtos.nome}">Nome</h1>
+				<p>
+					<img th:if="${produtos.imagem!=null}" th:src="@{/produtos/imagem/{id}(id=${produtos.codProd})}" alt="Foto do Produto" style="width: auto;height: auto;
+					max-width: 70%;max-height: 70%">
+					<span th:unless="${produtos.imagem!=null}">Sem foto</span>
+				</p>
+				<p>Codigo:<span th:text="${produtos.codProd}">código</span></p>
+				<p>Nome:<span th:text="${produtos.nome}">nome</span></p>
+				<p>Tipo:<span th:text="${produtos.tipo}">tipo</span></p>
+				<p>Descrição:<span th:text="${produtos.descricao}">descrição</span></p>
+				<p>Preço Unitário:<span th:text="${produtos.valor}">valor</span></p>
+				<p>Quantidade:<span th:text="${produtos.quantidade}">quantidade</span></p>
+				<p>Validade:<span th:text="${produtos.validade}">validade</span></p>
+				<p>Data de Fabricação:<span th:text="${produtos.dataFabric}">data de fabricação</span></p>
+			</div>
+		</section>
+	</body>
+</html>

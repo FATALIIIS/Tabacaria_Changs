@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<form th:action="@{/produtos/buscar}" method="get" id="formulario">
+			<select name="campo">
+				<option value="codigo" th:selected="${campo =='codigo'}">Código</option>
+				<option value="nome" th:selected="${campo =='nome'}">Nome</option>
+				<option value="tipo" th:selected="${campo =='tipo'}">Tipo</option>
+				<option value="descricao" th:selected="${campo =='descricao'}">Descrição</option>
+				<option value="valor" th:selected="${campo =='valor'}">Valor</option>
+				<option value="quantidade" th:selected="${campo =='quantidade'}">Quantidade</option>
+				<option value="validade" th:selected="${campo =='validade'}">Validade</option>
+				<option value="dataFabric" th:selected="${campo =='dataFabric'}">Data Fabricação</option>
+			</select>
+			<input type="text" name="valor" th:value="${valor}" placeholder="Digite a busca...">
+			<button type="submit">Buscar</button>
+		</form>
+		<h2 th:if="${total<=0}">Nenhum resultado encontrado!</h2>
+		<div th:if="${total>0}">
+			<span th:text="${debug}"></span>
+			<table>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>Descrição</th>
+					<th>Valor</th>
+					<th>Quantidae</th>
+					<th>Validade</th>
+					<th>Data de Fabricação</th>
+					<th>Alterar?</th>
+					<th>Excluir?</th>
+				</tr>
+				<tr th:each="produtos:${produtos}">
+					<td th:text="${produtos.codProd}">Código</td>
+					<td th:text="${produtos.nome}">Nome</td>
+					<td th:text="${produtos.tipo}">Tipo</td>
+					<td th:text="${produtos.descricao}">Descrição</td>
+					<td th:text="${produtos.valor}">Valor</td>
+					<td th:text="${produtos.quantidade}">Quantidade</td>
+					<td th:text="${produtos.validade}">Validade</td>
+					<td th:text="${produtos.dataFabric}">Data de Fabricação</td>
+					<td><a th:href="@{/produtos/alterar(codProd=${produtos.codProd})}">Sim</a></td>
+					<td><a th:href="@{/produtos/excluir(codProd=${produtos.codProd})}">Sim</a></td>
+					</tr>
+			</table>
+			<div style="margin-top: 15px;display: flex;justify-content: center;">
+				<span class="botao-pag" th:if="${paginaAtual>0}">
+					<a th:href="@{/produtos/buscar(page=${paginaAtual-1})}">
+						Anterior
+					</a>
+				</span>
+				<span class="texto-pag">Página <span th:text="${paginaAtual+1}">Atual+1</span> de <span th:text="${totalPaginas}">1</span></span>
+				<span class="botao-pag" th:if="${paginaAtual+1 <totalPaginas}">
+					<a th:href="@{/produtos/buscar(page=${paginaAtual+1})}">
+						Próxima
+					</a>
+				</span>
+			</div>
+		</div>
+	</body>
+</html>

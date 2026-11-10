@@ -3,11 +3,16 @@ package com.tabacariachang.site.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,7 +41,7 @@ public class ProdutosController {
 	}
 	
 	@PostMapping("/produtos/cadastrar")
-	public String cadastrar(Model model, Produtos produtos, @RequestParam(value = "imagem",required=false)MultipartFile arquivo) {
+	public String cadastrar(Model model, Produtos produtos, @RequestParam(value = "imagem",required=true)MultipartFile arquivo) {
 		try {
 			if(arquivo != null && !arquivo.isEmpty ()) {
 				produtos.setImagem(arquivo.getBytes());
@@ -45,7 +50,7 @@ public class ProdutosController {
 			String resposta=(resultado)?"Cadastrado com sucesso!":"Erro na tentativa de cadastrar!";
 			model.addAttribute("resposta",resposta);
 		}catch (Exception e) {
-			model.addAttribute("resposta","Erro ao processar a foto!");
+			model.addAttribute("resposta","Erro ao processar a foto!"+e);
 		}
 		model.addAttribute("produtos", new Produtos());
 		return "cadastrarprodutos";
@@ -133,6 +138,26 @@ public class ProdutosController {
 		}else {
 			model.addAttribute("resposta","Erro na tentativa de excluir!");
 			return "excluirprodutos";
+		}
+	}
+	@GetMapping("/produtos/imagem/{id}")
+	public ResponseEntity<byte[]> exibirFoto(@PathVariable("id") Integer id){
+		Produtos produtos=produtosService.buscarPorCodigo(id); if(produtos!=null && produtos.getImagem()!= null) {
+			HttpHeaders headers=new HttpHeaders();
+			headers.setContentType(MediaType.IMAGE_JPEG);
+			return new ResponseEntity<>(produtos.getImagem(),headers,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping("/produtos/{id}")
+	public String mostraDetalhes(Model model, @PathVariable("id") Integer id) {
+		Produtos produtos=produtosService.buscarPorCodigo(id);
+		if(produtos!=null) {
+			model.addAttribute("produtos",produtos);
+			return "produtos";
+		}else {
+			return "redirect:/produtos/buscar";
 		}
 	}
 }

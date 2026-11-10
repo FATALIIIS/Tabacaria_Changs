@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<h2 th:if="${total<=0}">Não há produtos cadastrados!</h2>
+		<div th:of="${total>0}">
+			<table>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>Descrição</th>
+					<th>Preço Unitário</th>
+					<th>Quantidade</th>
+					<th>Validade</th>
+					<th>Data de Fabricação</th>
+					<th>Foto do Produto</th>
+				</tr>
+				<tr th:each="produtos:${produtos}">
+					<td><a th:href="@{/produtos/{id}(id=${produtos.codProd})}" th:text="${produtos.codProd}">Código</a></td>
+					<td th:text="${produtos.nome}">nome</td>
+					<td th:text="${produtos.tipo}">tipo</td>
+					<td th:text="${produtos.descricao}">descrção</td>
+					<td th:text="${produtos.valor}">preço</td>
+					<td th:text="${produtos.quantidade}">quantidade</td>
+					<td th:text="${produtos.validade}">validade</td>
+					<td th:text="${produtos.dataFabric}">data fabricação</td>
+					<td>
+						<img th:if="${produtos.imagem != null}" th:src="@{/produtos/imagem/{id}(id=${produtos.codProd})}"
+						alt="Foto do Produto" width="80" height="80">
+						<span th:unless="${produtos.imagem != null}">
+							Sem foto
+						</span>
+					</td>
+				</tr>
+			</table>
+			<div style="margin-top: 15px;display: flex;justify-content: center;">
+				<span class="botao-pag" th:if="${paginaAtual>0}">
+						<a th:href="@{/produtos/listar(page=${paginaAtual-1})}">
+							Anterior
+						</a>
+					</span>
+					<span class="texto-pag">Página <span th:text="${paginaAtual+1}">Atual+1</span> de <span th:text="${totalPaginas}">1</span></span>
+					<span class="botao-pag" th:if="${paginaAtual+1 <totalPaginas}">
+						<a th:href="@{/produtos/listar(page=${paginaAtual+1})}">
+							Próxima
+						</a>
+					</span>
+				</div>
+		</div>
+	</body>
+</html>
