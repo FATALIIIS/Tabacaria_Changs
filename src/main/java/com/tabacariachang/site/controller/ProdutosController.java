@@ -1,5 +1,7 @@
 package com.tabacariachang.site.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -32,6 +34,8 @@ public class ProdutosController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setDisallowedFields("imagem");
+		binder.setDisallowedFields("dataFabric");
+		binder.setDisallowedFields("validade");
 	}
 	
 	@GetMapping("/produtos/cadastrar")
@@ -96,16 +100,22 @@ public class ProdutosController {
 			Model model) {
 		Produtos produtos=produtosService.buscarPorCodigo(codProd);
 		model.addAttribute("produtos",produtos);
+		model.addAttribute("dataFabri",produtos.getDataFabric());
+		model.addAttribute("validad",produtos.getValidade());
 		return "alterarprodutos";
 	}
 	
-	@PostMapping("/produto/alterar")
+	@PostMapping("/produtos/alterar")
 	public String alterar(
 			@RequestParam("codProd") Integer codProd,
 			Produtos produtos,
-			Model model
+			Model model, @RequestParam(name="dataFabric") String dataFabric,
+			@RequestParam(name="validade") String validade
 			) {
 		produtos.setCodProd(codProd);
+		produtos.setDataFabric(LocalDate.parse(dataFabric));
+		produtos.setValidade(LocalDate.parse(validade));
+			
 		
 		Produtos velhoProd=produtosService.buscarPorCodigo(codProd);
 		if(velhoProd==null) {

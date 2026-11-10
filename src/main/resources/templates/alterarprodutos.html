@@ -18,10 +18,14 @@
 			<label for="quantidade">Quantidade:</label><br>
 			<input type="number" th:field="*{quantidade}" min="0" max="9999" step="1"><br>
 			<label for="validade">Validade:</label><br>
-			<input type="date" th:field="*{validade}"><br>
+			<input type="date" id="validade" th:value="${validad}"><br>
 			<label for="dataFabric">Data de Fabricação:</label><br>
-			<input type="date" th:field="*{dataFabric}"><br>
+			<input type="date" id="dataFabric" th:value="${dataFabri}"><br>
 			<label for="foto">Foto do Produto:</label><br>
+			<p>
+			<img th:if="${produtos.imagem!=null}" th:src="@{/produtos/imagem/{id}(id=${produtos.codProd})}" alt="Foto do Produto" style="width: auto;height: auto;
+			max-width: 70%;max-height: 70%">
+			</p>
 			<input type="file" id="imagem" name="imagem" accept="png,jpg,jpeg,bmp,gif"><br>
 			<button type="submit">Alterar</button>
 		</form>
