@@ -34,3 +34,21 @@ section.topo{
 	max-height: 100%;
 	
 }
+#menu{
+	width: 90%;
+	height: 105%;
+	display: flex;
+}
+#busca{
+		width: 90%;
+		height: 100%;
+}
+#botoes{
+		width: 90%;
+		height: 90%;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+		
+		
+}
