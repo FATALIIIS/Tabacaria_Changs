@@ -13,3 +13,24 @@
 	--letra:#F2F2F2;
 	--fonte:"Arial Narrow Bold Italic.",sans-serif;
 }
+section{
+	display: flex;
+	justify-content: center;
+}
+section.topo{
+	width: 100%;
+	height: 10vh;
+	background-color: var(--fundo);
+	
+}
+#logo{
+	width: 10%;
+	height: 100%;
+}
+#logo img{
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	
+}
