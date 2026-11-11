@@ -34,8 +34,6 @@ public class ProdutosController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setDisallowedFields("imagem");
-		binder.setDisallowedFields("dataFabric");
-		binder.setDisallowedFields("validade");
 	}
 	
 	@GetMapping("/produtos/cadastrar")
@@ -100,8 +98,6 @@ public class ProdutosController {
 			Model model) {
 		Produtos produtos=produtosService.buscarPorCodigo(codProd);
 		model.addAttribute("produtos",produtos);
-		model.addAttribute("dataFabri",produtos.getDataFabric());
-		model.addAttribute("validad",produtos.getValidade());
 		return "alterarprodutos";
 	}
 	
@@ -109,13 +105,8 @@ public class ProdutosController {
 	public String alterar(
 			@RequestParam("codProd") Integer codProd,
 			Produtos produtos,
-			Model model, @RequestParam(name="dataFabric") String dataFabric,
-			@RequestParam(name="validade") String validade
-			) {
+			Model model,@RequestParam(value = "imagem",required=true)MultipartFile arquivo) {
 		produtos.setCodProd(codProd);
-		produtos.setDataFabric(LocalDate.parse(dataFabric));
-		produtos.setValidade(LocalDate.parse(validade));
-			
 		
 		Produtos velhoProd=produtosService.buscarPorCodigo(codProd);
 		if(velhoProd==null) {
@@ -123,6 +114,13 @@ public class ProdutosController {
 			model.addAttribute("produtos",produtos);
 			return "alterarprodutos";
 		}
+		try {
+			if(arquivo != null && !arquivo.isEmpty ()) {
+				produtos.setImagem(arquivo.getBytes());
+			}
+			}catch (Exception e) {
+				model.addAttribute("resposta","Erro ao processar a foto!"+e);
+			}
 		boolean resultado=produtosService.atualizar(codProd, produtos);
 		String resposta=(resultado)?"Alterado com sucesso!": "Erro na tentativa de alterar!";
 		model.addAttribute("resposta",resposta);
