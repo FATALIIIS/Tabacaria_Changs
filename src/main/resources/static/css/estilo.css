@@ -5,11 +5,11 @@
 	
 }
 :root{
-	--botao:rgb(255, 128, 64);
-	--destaque: rgb(128, 128, 64);
-	--letrabotao:rgb(64, 0, 64);
-	--fundo: rgb(0, 0, 0);
-	--titulo:rgb(255, 255, 255);
+	--botao:#D1A356;
+	--destaque: #A9D0D9;
+	--letrabotao:rgb(0, 0, 0);
+	--fundo: #194342;
+	--titulo:#0D0D0D;
 	--letra:#F2F2F2;
 	--fonte:"Arial Narrow Bold Italic.",sans-serif;
 }
@@ -35,8 +35,8 @@ section.topo{
 	
 }
 #menu{
-	width: 90%;
-	height: 105%;
+	width: 80%;
+	height: 90%;
 	display: flex;
 }
 #busca{
@@ -44,11 +44,81 @@ section.topo{
 		height: 100%;
 }
 #botoes{
-		width: 90%;
-		height: 90%;
-		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
+	width: 75%;
+	height: 100%;
+	display: flex;
+	justify-content:center;
+	align-items: center;
 		
-		
+}
+ul.nav{
+	padding: 0;
+	margin: 0;
+	width: 90%;
+	height: 30%;
+	list-style-type: none;
+	display: flex;
+}
+ul.nav li{
+	position: relative;
+	width: 13%;
+	margin-left: 6%;
+	padding-top: 0;
+	background-color: var(--botao);
+	cursor:pointer;
+	border-radius: 16px;
+	border: 2px solid var(--titulo);
+	text-align: center;
+	color: var(--letrabotao);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+ul.nav li a{
+	color: var(--letrabotao);
+	display: block;
+	font-size: 1.2vw;
+	text-decoration: none;
+}
+#formulario{
+	width: 60vw;
+	margin-left: 20vw;
+	height: auto;
+	margin-top: 10vh;
+	background-color: var(--fundo);
+	text-align: center;
+	border: 1px solid var(--titulo);
+	border-radius: 16px;
+	color: var(--letra);
+}
+#formulario input[type=submit],#formulario button{
+	width: 20%;
+	background-color: var(--botao);
+	border: 2px solid var(--titulo);
+	border-radius: 16px;
+	font-size: 1.2vw;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+h2{
+	display: flex;
+	justify-content: center;
+	font-size: 1.3vw;
+	color: var(--fundo);
+}
+ul.nav li ol{
+	display: none;
+	list-style-type: none;
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	border-top: 0px;
+}
+ul.nav li ol li{
+	width: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+	border-top: 0px;
 }

@@ -15,6 +15,7 @@
 		<section th:if="${resposta!=null}">
 		<div th:if="${resposta}">
 			<h2>Login com sucesso!</h2>
+			<meta http-equiv="refresh" th:content="'2;url='+@{/}">
 		</div>
 		<div th:unless="${resposta}"^>
 			<h2>Login ou senha incorretos!</h2>
