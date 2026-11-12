@@ -125,3 +125,8 @@ ul.nav li ol li{
 ul.nav li:hover ol{
 	display: block;
 }
+button.excluirBotao a{
+	text-decoration: none;
+	display: block;
+	color: black;
+}
