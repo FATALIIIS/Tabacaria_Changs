@@ -133,3 +133,19 @@ button.excluirBotao a{
 body{
 		background-color: rgb(64, 128, 128);
 }
+table{
+	width: 90vw;
+	height: auto;
+	margin-left: 5vw;
+	margin-top: 10vh;
+	
+}
+table th{
+	background-color: brown;
+	color: black;
+	border: 1px solid #D1A356;
+	
+}
+table td{
+	border: 1px solid black;
+}
