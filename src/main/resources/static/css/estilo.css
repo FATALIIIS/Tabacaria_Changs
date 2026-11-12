@@ -10,7 +10,7 @@
 	--letrabotao:rgb(0, 0, 0);
 	--fundo: #194342;
 	--titulo:rgb(255, 255, 255);
-	--letra:#F2F2F2;
+	--letra:rgb(0, 0, 0);
 	--fonte:"Arial Narrow Bold Italic.",sans-serif;
 }
 section{
@@ -104,7 +104,7 @@ h2{
 	display: flex;
 	justify-content: center;
 	font-size: 1.3vw;
-	color: var(--fundo);
+	color: var(--letra);
 }
 ul.nav li ol{
 	display: none;
