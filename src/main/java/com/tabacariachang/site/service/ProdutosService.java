@@ -83,7 +83,9 @@ public class ProdutosService {
 		produtos.setValidade(dadosNovos.getValidade());
 		produtos.setValor(dadosNovos.getValor());
 		produtos.setDataFabric(dadosNovos.getDataFabric());
-		
+		if(dadosNovos.getImagem()!=null) {
+		produtos.setImagem(dadosNovos.getImagem());
+		}
 		produtosRepository.save(produtos);
 		return true;
 	}

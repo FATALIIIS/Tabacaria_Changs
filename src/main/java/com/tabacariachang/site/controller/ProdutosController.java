@@ -117,6 +117,8 @@ public class ProdutosController {
 		try {
 			if(arquivo != null && !arquivo.isEmpty ()) {
 				produtos.setImagem(arquivo.getBytes());
+			}else {
+				produtos.setImagem(velhoProd.getImagem());
 			}
 			}catch (Exception e) {
 				model.addAttribute("resposta","Erro ao processar a foto!"+e);
