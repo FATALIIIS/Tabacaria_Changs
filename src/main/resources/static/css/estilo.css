@@ -10,7 +10,7 @@
 	--letrabotao:rgb(0, 0, 0);
 	--fundo: #194342;
 	--titulo:rgb(0, 0, 0);
-	--letra:rgb(255, 255, 255);
+	--letra:rgb(0, 0, 0);
 	--fonte:"Arial Narrow Bold Italic.",sans-serif;
 }
 section{
@@ -129,4 +129,7 @@ button.excluirBotao a{
 	text-decoration: none;
 	display: block;
 	color: black;
+}
+body{
+		background-color: rgb(64, 128, 128);
 }
