@@ -9,8 +9,8 @@
 			<h1>Excluir</h1>
 			<p>Tem certeza que deseja excluir o</p>
 			<h2 th:text="${produtos.nome}">nome</h2>
-			<button type="submit">Sim</button>
-			<button><a th:href="@{/produtos/buscar}">Não</a></button>
+			<button type="submit" >Sim</button>
+			<button class="excluirBotao"><a th:href="@{/produtos/buscar}">Não</a></button>
 		</form>
 		<section th:if="${resposta!=null}">
 			<h2 th:text="${resposta}">Erro</h2>
