@@ -5,7 +5,7 @@
 	<body>
 		<section th:replace="~{menu :: topo}"></section>
 		<h2 th:if="${total<=0}">Não há produtos cadastrados!</h2>
-		<div th:of="${total>0}">
+		<div th:if="${total>0}">
 			<table>
 				<tr>
 					<th>Código</th>
