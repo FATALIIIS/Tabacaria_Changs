@@ -3,6 +3,8 @@ package com.tabacariachang.site.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ public class Produtos {
 	@Column(name = "tipo",nullable = false, length = 30)
 	private String tipo;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "validade",nullable = false)
 	private LocalDate validade;	
 	
@@ -39,6 +42,7 @@ public class Produtos {
 	@Column(name = "imagem",nullable = false, columnDefinition = "bytea")
 	private byte[] imagem;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "dataFabric",nullable = false)
 	private LocalDate dataFabric;
 	
