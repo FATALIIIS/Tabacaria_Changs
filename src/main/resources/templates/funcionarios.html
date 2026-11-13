@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<section>
+			<div th:if="${funcionarios!=null}" class="funcionarios">
+				<h1 th:text="${funcionarios.nome}">Nome</h1>
+				<p>Codigo:<span th:text="${funcionarios.codFunc}">código</span></p>
+				<p>Nome:<span th:text="${funcionarios.nome}">nome</span></p>
+				<p>CPF:<span th:text="${funcionarios.cpf}">cpf</span></p>
+				<p>Login:<span th:text="${funcionarios.login}">login</span></p>
+				<p>Endereço:<span th:text="${funcionarios.endereco}">endereço</span></p>
+				<p>Telefone:<span th:text="${funcionarios.telefone}">telefone</span></p>
+				<p>E-mail:<span th:text="${funcionarios.email}">email</span></p>
+				<p>Data de Nascimento:<span th:text="${funcionarios.dataNasci}">data de nascimento</span></p>
+				<p>Sexo:<span th:text="${funcionarios.sexo}">sexo</span></p>
+			</div>
+		</section>
+	</body>
+</html>

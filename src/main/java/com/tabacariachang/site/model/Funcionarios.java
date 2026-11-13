@@ -35,7 +35,7 @@ public class Funcionarios {
 	@Column(name = "endereco", nullable = false, length = 50)
 	private String endereco;
 	
-	@Column(name = "sexo", nullable = false, length = 1)
+	@Column(name = "sexo", nullable = false, length = 10)
 	private String sexo;
 	
 	@Column(name = "login", nullable = false, length = 20)

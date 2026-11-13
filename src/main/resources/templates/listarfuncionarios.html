@@ -1,81 +1,48 @@
 <!DOCTYPE html>
-package com.tabacariachang.site.model;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "funcionararios")
-public class listarFuncionarios {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer codFunci;
-	
-	@Column(name = "nome",nullable = false,length = 40)
-	private String nome;
-	
-	@Column(name = "funcionario",nullable = false,length = 20,unique = true)
-	private String funcionario;
-	
-	@Column(name = "senha",nullable = false,length = 80)
-	private String senha;
-	
-	@Column(name = "cpf",nullable = false, length = 11,unique = true)
-	private String cpf;
-	
-	public funcionario() {
-		
-	}
-	public Integer getCodFunc() {
-		return codFunc;
-	}
-
-	public void setCodAdm(Integer codFunc) {
-		this.codAdm = codFunc;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
-	public void criptografa() {
-		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
-		this.senha=encoder.encode(this.senha);
-	}
-	
-}
+<html xmlns="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<h2 th:if="${total<=0}">Não há funcionários cadastrados!</h2>
+		<div th:if="${total>0}">
+			<table>
+				<tr>
+					<th>Código do Funcionário</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Login</th>
+					<th>Endereço</th>
+					<th>Telefone</th>
+					<th>E-mail</th>
+					<th>Data de Nascimento</th>
+					<th>Sexo</th>
+				</tr>
+				<tr th:each="funcionarios:${funcionarios}">
+					<td><a th:href="@{/funcionarios/{id}(id=${funcionarios.codFunc})}" th:text="${funcionarios.codFunc}">Código do Funcionário</a></td>
+					<td th:text="${funcionarios.nome}">nome</td>
+					<td th:text="${funcionarios.cpf}">cpf</td>
+					<td th:text="${funcionarios.login}">login</td>
+					<td th:text="${funcionarios.endereco}">endereço</td>
+					<td th:text="${funcionarios.telefone}">telefone</td>
+					<td th:text="${funcionarios.email}">email</td>
+					<td th:text="${funcionarios.dataNasci}">data nascimento</td>
+					<td th:text="${funcionarios.sexo}">sexo</td>
+				</tr>
+			</table>
+			<div style="margin-top: 15px;display: flex;justify-content: center;">
+				<span class="botao-pag" th:if="${paginaAtual>0}">
+						<a th:href="@{/funcionarios/listar(page=${paginaAtual-1})}">
+							Anterior
+						</a>
+					</span>
+					<span class="texto-pag">Página <span th:text="${paginaAtual+1}">Atual+1</span> de <span th:text="${totalPaginas}">1</span></span>
+					<span class="botao-pag" th:if="${paginaAtual+1 <totalPaginas}">
+						<a th:href="@{/funcionarios/listar(page=${paginaAtual+1})}">
+							Próxima
+						</a>
+					</span>
+				</div>
+		</div>
+	</body>
+</html>

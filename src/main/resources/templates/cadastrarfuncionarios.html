@@ -8,20 +8,23 @@
 			<h1>Cadastrar Funcionários</h1>
 			<label for="nome">Nome do Funcionário:</label><br>
 			<input type="text" th:field="*{nome}" size="50" max="50" required><br>
-			<label for="tipo">Login:</label><br>
-			<input type="text" th:field="*{tipo}" size="50" max="50" required><br>
-			<label for="descricao">Senha:</label><br>
-			<textarea th:field="*{descricao}" cols="100" rows="4" maxlength="600"></textarea><br>
-			<label for="preco">Telefone:</label><br>
-			R$<input type="number" th:field="*{valor}" min="0.01" max="9999.99" step="0.01" required><br>
-			<label for="quantidade">Quantidade:</label><br>
-			<input type="number" th:field="*{quantidade}" min="0" max="9999" step="1" required><br>
-			<label for="validade">Validade:</label><br>
-			<input type="date" th:field="*{validade}" required><br>
-			<label for="dataFabric">Data de Fabricação:</label><br>
-			<input type="date" th:field="*{dataFabric}" required><br>
-			<label for="foto">Foto do Produto:</label><br>
-			<input type="file" id="imagem" name="imagem" accept="png,jpg,jpeg,bmp,gif" required><br>
+			<label for="login">Login:</label><br>
+			<input type="text" th:field="*{login}" size="50" max="50" required><br>
+			<label for="senha">Senha:</label><br>
+			<input type="password" th:field="*{senha}" size="80" max="80" required><br>
+			<label for="telefone">Telefone:</label><br>
+			<input type="number" th:field="*{telefone}" required><br>
+			<label for="endereco">Endereço:</label><br>
+			<input type="text" th:field="*{endereco}" required><br>
+			<label for="email">E-mail:</label><br>
+			<input type="text" th:field="*{email}" required><br>
+			<label for="dataNasci">Data de Nascimento:</label><br>
+			<input type="date" th:field="*{dataNasci}" required><br>
+			<label for="cpf">CPF:</label><br>
+			<input type="number" th:field="*{cpf}" size="11" max="99999999999" required><br>
+			<label for="sexo">Sexo:</label><br>
+			<input type="radio" th:field="*{sexo}" value="feminino" required>Feminino<br>
+			<input type="radio" th:field="*{sexo}" value="masculino" required>Masculino<br>
 			<button type="submit">Cadastrar</button>	
 		</form>
 		<h2 th:text="${resultado}"></h2>
