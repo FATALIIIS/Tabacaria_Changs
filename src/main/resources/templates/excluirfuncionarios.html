@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{cabecalho :: cabecalho}">
+	</head>
+	<body>
+		<section th:replace="~{menu :: topo}"></section>
+		<form th:action="@{/funcionarios/excluir}" method="post" id="formulario">
+			<input type="hidden" name="codFunc" th:value="${funcionarios.codFunc}">
+			<h1>Excluir</h1>
+			<p>Tem certeza que deseja excluir o</p>
+			<h2 th:text="${funcionarios.nome}">nome</h2>
+			<button type="submit" >Sim</button>
+			<button class="excluirBotao"><a th:href="@{/funcionarios/buscar}">Não</a></button>
+		</form>
+		<section th:if="${resposta!=null}">
+			<h2 th:text="${resposta}">Erro</h2>
+		</section>
+	</body>
+</html>

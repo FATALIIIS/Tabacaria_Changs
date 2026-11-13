@@ -2,6 +2,8 @@ package com.tabacariachang.site.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +25,7 @@ public class Funcionarios {
 	@Column(name = "senha", nullable = false, length = 80)
 	private String senha;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "dataNasci",nullable = false)
 	private LocalDate dataNasci;
 	

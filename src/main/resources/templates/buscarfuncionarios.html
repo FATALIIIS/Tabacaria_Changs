@@ -4,16 +4,17 @@
 	</head>
 	<body>
 		<section th:replace="~{menu :: topo}"></section>
-		<form th:action="@{/produtos/buscar}" method="get" id="formulario">
+		<form th:action="@{/funcionarios/buscar}" method="get" id="formulario">
 			<select name="campo">
 				<option value="codigo" th:selected="${campo =='codigo'}">Código</option>
 				<option value="nome" th:selected="${campo =='nome'}">Nome</option>
-				<option value="tipo" th:selected="${campo =='tipo'}">Tipo</option>
-				<option value="descricao" th:selected="${campo =='descricao'}">Descrição</option>
-				<option value="valor" th:selected="${campo =='valor'}">Valor</option>
-				<option value="quantidade" th:selected="${campo =='quantidade'}">Quantidade</option>
-				<option value="validade" th:selected="${campo =='validade'}">Validade</option>
-				<option value="dataFabric" th:selected="${campo =='dataFabric'}">Data Fabricação</option>
+				<option value="cpf" th:selected="${campo =='cpf'}">Cpf</option>
+				<option value="login" th:selected="${campo =='login'}">Login</option>
+				<option value="endereco" th:selected="${campo =='emdereco'}">Endereço</option>
+				<option value="telefone" th:selected="${campo =='telefone'}">Telefone</option>
+				<option value="E-mail" th:selected="${campo =='email'}">Email</option>
+				<option value="dataNasci" th:selected="${campo =='dataNasci'}">Data Nascimento</option>
+				<option value="sexo" th:selected="${campo =='sexo'}">Sexo</option>
 			</select>
 			<input type="text" name="valor" th:value="${valor}" placeholder="Digite a busca...">
 			<button type="submit">Buscar</button>
@@ -25,37 +26,39 @@
 				<tr>
 					<th>Código</th>
 					<th>Nome</th>
-					<th>Tipo</th>
-					<th>Descrição</th>
-					<th>Valor</th>
-					<th>Quantidae</th>
-					<th>Validade</th>
-					<th>Data de Fabricação</th>
+					<th>CPF</th>
+					<th>Login</th>
+					<th>Endereço</th>
+					<th>Telefone</th>
+					<th>Email</th>
+					<th>Data de Nascimento</th>
+					<th>Sexo</th>
 					<th>Alterar?</th>
 					<th>Excluir?</th>
 				</tr>
-				<tr th:each="produtos:${produtos}">
-					<td th:text="${produtos.codProd}">Código</td>
-					<td th:text="${produtos.nome}">Nome</td>
-					<td th:text="${produtos.tipo}">Tipo</td>
-					<td th:text="${produtos.descricao}">Descrição</td>
-					<td th:text="${produtos.valor}">Valor</td>
-					<td th:text="${produtos.quantidade}">Quantidade</td>
-					<td th:text="${produtos.validade}">Validade</td>
-					<td th:text="${produtos.dataFabric}">Data de Fabricação</td>
-					<td><a th:href="@{/produtos/alterar(codProd=${produtos.codProd})}">Sim</a></td>
-					<td><a th:href="@{/produtos/excluir(codProd=${produtos.codProd})}">Sim</a></td>
+				<tr th:each="funcionarios:${funcionarios}">
+					<td th:text="${funcionarios.codFunc}">Código</td>
+					<td th:text="${funcionarios.nome}">Nome</td>
+					<td th:text="${funcionarios.cpf}">CPF</td>
+					<td th:text="${funcionarios.login}">Login</td>
+					<td th:text="${funcionarios.endereco}">Endereco</td>
+					<td th:text="${funcionarios.telefone}">Telefone</td>
+					<td th:text="${funcionarios.email}">E-mail</td>
+					<td th:text="${funcionarios.dataNasci}">Data de Nascimento</td>
+					<td th:text="${funcionarios.sexo}">Sexo</td>
+					<td><a th:href="@{/funcionarios/alterar(codFunc=${funcionarios.codFunc})}">Sim</a></td>
+					<td><a th:href="@{/funcionarios/excluir(codFunc=${funcionarios.codFunc})}">Sim</a></td>
 					</tr>
 			</table>
 			<div style="margin-top: 15px;display: flex;justify-content: center;">
 				<span class="botao-pag" th:if="${paginaAtual>0}">
-					<a th:href="@{/produtos/buscar(page=${paginaAtual-1})}">
+					<a th:href="@{/funcionarios/buscar(page=${paginaAtual-1})}">
 						Anterior
 					</a>
 				</span>
 				<span class="texto-pag">Página <span th:text="${paginaAtual+1}">Atual+1</span> de <span th:text="${totalPaginas}">1</span></span>
 				<span class="botao-pag" th:if="${paginaAtual+1 <totalPaginas}">
-					<a th:href="@{/produtos/buscar(page=${paginaAtual+1})}">
+					<a th:href="@{/funcionarios/buscar(page=${paginaAtual+1})}">
 						Próxima
 					</a>
 				</span>

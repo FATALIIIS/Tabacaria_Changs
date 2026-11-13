@@ -129,6 +129,7 @@ button.excluirBotao a{
 	text-decoration: none;
 	display: block;
 	color: black;
+	cursor: default;
 }
 body{
 		background-color: rgb(64, 128, 128);
