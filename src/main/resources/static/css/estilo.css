@@ -1,152 +1,719 @@
-*{
-	margin:0px;
+* {
+	margin: 0px;
 	padding: 0px;
-	font-family: Arial Narrow Bold Italic;
-	
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-:root{
-	--botao:#D1A356;
+
+:root {
+	--botao: #BFA380;
+	--botao-hover: #d4b996;
 	--destaque: #A9D0D9;
-	--letrabotao:rgb(0, 0, 0);
-	--fundo: #194342;
-	--titulo:rgb(0, 0, 0);
-	--letra:rgb(255, 255, 255);
-	--fonte:"Arial Narrow Bold Italic.",sans-serif;
+	--vermelho-dragao: #9E2B25;
+	--verde-fundo: #063b06;
+	--preto-carvao: #0D0D0D;
+	--card-escuro: #141414;
+	--painel-destaque: #1f0a09;
+	--letrabotao: #0D0D0D;
+	--fundo: #0D0D0D;
+	--titulo: #0D0D0D;
+	--letra: #FFFFFF;
+	--fonte: 'Segoe UI', sans-serif;
 }
-section{
+
+body {
+	background-color: var(--verde-fundo);
+	color: var(--letra);
+	min-height: 100vh;
+}
+
+section {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
-section.topo{
+
+/* ========================================================
+   BARRA SUPERIOR E MENU
+   ======================================================== */
+section.topo {
 	width: 100%;
 	height: 10vh;
+	min-height: 75px;
 	background-color: var(--fundo);
-	
+	border-bottom: 2px solid var(--botao);
+	padding: 0 3vw;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
-#logo{
-	width: 10%;
-	height: 100%;
-}
-#logo img{
-	width: auto;
-	height: auto;
-	max-width: 100%;
-	max-height: 100%;
-	
-}
-#menu{
-	width: 80%;
-	height: 90%;
-	display: flex;
-}
-#busca{
-		width: 90%;
-		height: 100%;
-}
-#botoes{
-	width: 75%;
+
+#logo {
+	width: 12%;
 	height: 100%;
 	display: flex;
-	justify-content:center;
 	align-items: center;
-		
+	justify-content: flex-start;
 }
-ul.nav{
+
+#logo img {
+	height: 8.5vh;
+	max-height: 85%;
+	width: auto;
+	object-fit: contain;
+}
+
+#menu {
+	width: 88%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#busca {
+	width: 45%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#busca input[type="text"],
+#busca input[type="search"],
+#busca input:not([type="submit"]):not([type="button"]) {
+	width: 75%;
+	height: 4.5vh;
+	min-height: 36px;
+	padding: 0 1vw;
+	border: 1px solid var(--destaque);
+	border-right: none;
+	border-radius: 8px 0 0 8px;
+	font-size: 1vw;
+	outline: none;
+	background-color: #ffffff;
+	color: #0D0D0D;
+}
+
+#busca input[type="submit"],
+#busca button {
+	width: 22%;
+	height: 4.5vh;
+	min-height: 36px;
+	background-color: var(--botao);
+	color: var(--letrabotao);
+	font-weight: bold;
+	font-size: 1vw;
+	border: none;
+	border-radius: 0 8px 8px 0;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+#busca input[type="submit"]:hover,
+#busca button:hover {
+	background-color: var(--botao-hover);
+}
+
+#botoes {
+	width: 55%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1.5vw;
+	color: var(--destaque);
+	font-weight: 500;
+	font-size: 1.1vw;
+}
+
+ul.nav {
 	padding: 0;
 	margin: 0;
-	width: 90%;
-	height: 30%;
+	width: auto;
+	height: auto;
 	list-style-type: none;
 	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1vw;
 }
-ul.nav li{
+
+ul.nav li {
 	position: relative;
-	width: 13%;
-	margin-left: 6%;
-	padding-top: 0;
+	min-width: 7vw;
+	padding: 0.8vh 1.2vw;
 	background-color: var(--botao);
-	cursor:pointer;
-	border-radius: 16px;
-	border: 2px solid var(--titulo);
+	cursor: pointer;
+	border-radius: 10px;
+	border: none;
 	text-align: center;
 	color: var(--letrabotao);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+	transition: all 0.2s ease;
 }
-ul.nav li a{
+
+ul.nav li:hover {
+	background-color: var(--botao-hover);
+	transform: translateY(-2px);
+}
+
+ul.nav li a {
 	color: var(--letrabotao);
 	display: block;
-	font-size: 1.2vw;
+	font-size: 1.05vw;
+	font-weight: 600;
 	text-decoration: none;
+	white-space: nowrap;
 }
-#formulario{
-	width: 60vw;
-	margin-left: 20vw;
-	height: auto;
-	margin-top: 10vh;
-	background-color: var(--fundo);
-	text-align: center;
-	border: 1px solid var(--titulo);
-	border-radius: 16px;
-	color: var(--letra);
-}
-#formulario input[type=submit],#formulario button{
-	width: 20%;
-	background-color: var(--botao);
-	border: 2px solid var(--titulo);
-	border-radius: 16px;
-	font-size: 1.2vw;
-	margin-top: 2%;
-	margin-bottom: 2%;
-}
-h2{
-	display: flex;
-	justify-content: center;
-	font-size: 1.3vw;
-	color: var(--letra);
-}
-ul.nav li ol{
+
+ul.nav li ol {
 	display: none;
 	list-style-type: none;
 	width: 100%;
 	position: absolute;
 	top: 100%;
 	left: 0;
-	border-top: 0px;
+	padding-top: 0.5vh;
+	z-index: 100;
 }
-ul.nav li ol li{
+
+ul.nav li ol li {
 	width: 100%;
 	position: relative;
 	top: 0;
 	left: 0;
-	border-top: 0px;
+	margin-bottom: 0.4vh;
 }
-ul.nav li:hover ol{
+
+ul.nav li:hover ol {
 	display: block;
 }
-button.excluirBotao a{
+
+/* ========================================================
+   FORMULÁRIO COM CORES DE DESTAQUE E EMBLEMA DA LOGO
+   ======================================================== */
+#formulario {
+	width: 72vw;
+	max-width: 1050px;
+	margin: 3vh auto;
+	padding: 0;
+	display: grid;
+	grid-template-columns: 34% 66%;
+	background-color: var(--card-escuro);
+	border: 2px solid var(--botao);
+	border-radius: 14px;
+	overflow: hidden;
+	box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7), 0 0 22px rgba(191, 163, 128, 0.22);
+	text-align: left;
+}
+
+/* Quando #formulario é apenas uma barra de filtro (sem h1/h2), vira 1 coluna centralizada */
+#formulario:not(:has(h1)):not(:has(h2)) {
+	width: 50vw;
+	max-width: 680px;
+	grid-template-columns: 1fr;
+}
+
+#formulario:not(:has(h1)):not(:has(h2)) > * {
+	grid-column: 1;
+}
+
+/* Coluna 1: Painel Vibrante em Vermelho-Dragão e Preto com Brilho Dourado */
+#formulario > h1,
+#formulario > h2 {
+	position: relative;
+	grid-column: 1;
+	grid-row: 1 / span 20;
+	height: 100%;
+	background: linear-gradient(155deg, #6e1814 0%, #240908 55%, #0d0d0d 100%);
+	color: var(--botao);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 2.8vh 2vw;
+	margin: 0;
+	font-size: 1.45vw;
+	font-weight: 800;
+	line-height: 1.25;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	border-right: 2px solid var(--botao);
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+#formulario > h1::before,
+#formulario > h2::before {
+	content: "CHANG'S • TABACARIA";
+	background-color: rgba(13, 13, 13, 0.75);
+	color: var(--destaque);
+	border: 1px solid var(--destaque);
+	font-size: 0.62vw;
+	font-weight: bold;
+	padding: 0.45vh 0.75vw;
+	border-radius: 20px;
+	letter-spacing: 1px;
+}
+
+#formulario > h1::after,
+#formulario > h2::after {
+	content: "C";
+	align-self: center;
+	width: 5.2vw;
+	height: 5.2vw;
+	min-width: 64px;
+	min-height: 64px;
+	background: radial-gradient(circle, #1c0978 0%, #0d0d0d 75%);
+	color: var(--botao);
+	border: 2px solid var(--botao);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: Georgia, serif;
+	font-size: 2.2vw;
+	font-weight: 900;
+	box-shadow: 0 0 18px rgba(169, 208, 217, 0.45), inset 0 0 10px rgba(158, 43, 37, 0.8);
+}
+
+/* Coluna 2: Campos esticados com bordas de destaque */
+#formulario > *:not(h1):not(h2) {
+	grid-column: 2;
+	padding-left: 2.5vw;
+	padding-right: 2.5vw;
+}
+
+#formulario > form {
+	padding-top: 2.2vh;
+	padding-bottom: 2.2vh;
+	display: block;
+	font-size: 0.78vw;
+	color: var(--destaque);
+}
+
+#formulario br {
+	display: none;
+}
+
+#formulario label {
+	display: block;
+	font-size: 0.7vw;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	color: var(--destaque);
+	margin-top: 1vh;
+	margin-bottom: 0.3vh;
+}
+
+#formulario label:first-of-type {
+	margin-top: 0;
+}
+
+#formulario input[type="text"],
+#formulario input[type="number"],
+#formulario input[type="date"],
+#formulario input[type="password"],
+#formulario input[type="email"],
+#formulario textarea,
+#formulario select {
+	display: block;
+	width: 100%;
+	padding: 0.6vh 0.85vw;
+	background-color: #ffffff;
+	color: #0D0D0D;
+	border: 2px solid rgba(169, 208, 217, 0.4);
+	border-radius: 6px;
+	font-size: 0.8vw;
+	margin-bottom: 0.6vh;
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#formulario input:focus,
+#formulario textarea:focus,
+#formulario select:focus {
+	border-color: var(--botao);
+	box-shadow: 0 0 8px rgba(191, 163, 128, 0.5);
+}
+
+#formulario textarea {
+	height: 4.5vh;
+	min-height: 36px;
+	max-height: 8vh;
+	resize: vertical;
+}
+
+#formulario input[type="file"] {
+	display: block;
+	width: 100%;
+	padding: 0.45vh 0.8vw;
+	background-color: #ffffff;
+	color: #333333;
+	border: 2px solid rgba(169, 208, 217, 0.4);
+	border-radius: 6px;
+	font-size: 0.75vw;
+	cursor: pointer;
+}
+
+#formulario input[type="file"]::file-selector-button {
+	background-color: var(--vermelho-dragao);
+	color: #ffffff;
+	font-weight: bold;
+	border: none;
+	padding: 0.35vh 0.8vw;
+	border-radius: 4px;
+	margin-right: 0.6vw;
+	font-size: 0.72vw;
+	cursor: pointer;
+}
+
+#formulario input[type="submit"],
+#formulario button {
+	display: block;
+	width: 100%;
+	padding: 0.95vh 0;
+	background: linear-gradient(90deg, var(--botao) 0%, #d9be98 100%);
+	color: var(--letrabotao);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	border: none;
+	border-radius: 6px;
+	font-size: 0.85vw;
+	margin-top: 1.4vh;
+	margin-bottom: 0;
+	cursor: pointer;
+	box-shadow: 0 4px 14px rgba(191, 163, 128, 0.35);
+	transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+#formulario input[type="submit"]:hover,
+#formulario button:hover {
+	filter: brightness(1.08);
+	transform: translateY(-1px);
+}
+
+h2 {
+	display: flex;
+	justify-content: center;
+	font-size: 1.5vw;
+	margin-bottom: 2vh;
+	color: var(--destaque);
+}
+
+button.excluirBotao {
+	background-color: var(--vermelho-dragao);
+	border: none;
+	padding: 0.6vh 1vw;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: opacity 0.2s ease;
+}
+
+button.excluirBotao:hover {
+	opacity: 0.85;
+}
+
+button.excluirBotao a {
 	text-decoration: none;
 	display: block;
+	font-weight: bold;
 	color: black;
 	cursor: default;
 }
-body{
-		background-color: rgb(64, 128, 128);
-}
-table{
+
+/* ========================================================
+   TABELA TRANSFORMADA EM GRADE DE CARDS (ESTILO VITRINE)
+   ======================================================== */
+table {
+	display: block;
 	width: 90vw;
+	margin: 6vh auto 3vh auto;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+table thead {
+	display: none;
+}
+
+table tbody {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.8vw;
+	width: 100%;
+}
+
+table tr:has(td:nth-child(2)) {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--card-escuro);
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	padding-bottom: 2vh;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+table tr:not(:has(td:nth-child(2))):not(:has(th)) {
+	grid-column: 1 / -1;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	text-align: center;
+	padding: 1.5vh 0;
+}
+
+table tr:not(:has(td:nth-child(2))):not(:has(th)) td {
+	color: var(--destaque);
+	font-weight: bold;
+	font-size: 1vw;
+	text-align: center;
+}
+
+table tr:has(th) {
+	display: none;
+}
+
+table tr:has(td:nth-child(2)):hover {
+	transform: translateY(-5px);
+	box-shadow: 0 12px 26px rgba(0, 0, 0, 0.65);
+	border-color: var(--botao);
+}
+
+table td {
+	display: block;
+	border: none;
+	padding: 0.4vh 1.2vw;
+	font-size: 0.95vw;
+	color: #cccccc;
+}
+
+/* 9ª coluna quando TEM IMAGEM (Vitrine normal) */
+table td:nth-child(9):has(img) {
+	order: 1;
+	background-color: #ffffff;
+	padding: 1.5vh;
+	margin-bottom: 1.5vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 24vh;
+	}
+	table td:nth-child(9) img {
+	width: 100%;
+	height: 100%;
+	max-height: 21vh;
+	object-fit: contain;
+	border: none;
+	border-radius: 6px;
+	}
+	/* 9ª coluna quando TEM LINK "Sim" (Tela de Alteração/Exclusão) */
+	table td:nth-child(9):not(:has(img)) {
+	order: 8;
+	background: transparent;
 	height: auto;
-	margin-left: 5vw;
-	margin-top: 10vh;
-	
-}
-table th{
-	background-color: brown;
-	color: black;
-	border: 1px solid #D1A356;
-	
-}
-table td{
-	border: 1px solid black;
-}
+	padding: 1.6vh 1.2vw 0 1.2vw;
+	margin-top: auto;
+	}
+	table td:nth-child(9):not(:has(img)) a {
+	display: block;
+	width: 100%;
+	padding: 1vh 0;
+	background: linear-gradient(90deg, var(--botao) 0%, #d9be98 100%);
+	color: var(--letrabotao);
+	font-weight: 800;
+	font-size: 0.9vw;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	text-decoration: none;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+	transition: filter 0.2s ease, transform 0.2s ease;
+	}
+	table td:nth-child(9):not(:has(img)) a:hover {
+	filter: brightness(1.1);
+	transform: translateY(-2px);
+	}
+	/* Espaço superior nos cards sem foto para as etiquetas não cobrirem o título */
+	table tr:not(:has(td:nth-child(9) img)) td:nth-child(2) {
+	margin-top: 5.5vh;
+	}
+	table td:nth-child(2) {
+	order: 2;
+	font-size: 1.2vw;
+	font-weight: bold;
+	color: #ffffff;
+	margin-bottom: 0.5vh;
+	}
+	table td:nth-child(4) {
+	order: 3;
+	font-size: 0.9vw;
+	color: #9e9e9e;
+	line-height: 1.4;
+	margin-bottom: 1.2vh;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	}
+	table td:nth-child(5) {
+	order: 4;
+	font-size: 1.25vw;
+	font-weight: bold;
+	color: var(--botao);
+	margin-bottom: 0.8vh;
+	}
+	table td:nth-child(5)::before {
+	content: "R$ ";
+	}
+	table td:nth-child(3) {
+	position: absolute;
+	top: 1.2vh;
+	left: 1vw;
+	background-color: #0D0D0D;
+	color: #ffffff;
+	font-size: 0.75vw;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 0.4vh 0.7vw;
+	border-radius: 4px;
+	z-index: 10;
+	}
+	table td:nth-child(1) {
+	position: absolute;
+	top: 1.2vh;
+	right: 1vw;
+	background-color: rgba(13, 13, 13, 0.85);
+	padding: 0.4vh 0.7vw;
+	border-radius: 4px;
+	font-size: 0.75vw;
+	z-index: 10;
+	}
+	table td:nth-child(1) a {
+	color: var(--destaque);
+	font-weight: bold;
+	text-decoration: none;
+	}
+	table td:nth-child(6) {
+	order: 5;
+	font-size: 0.85vw;
+	color: #aaaaaa;
+	}
+	table td:nth-child(6)::before {
+	content: "Estoque: ";
+	color: #777777;
+	}
+	table td:nth-child(7) {
+	order: 6;
+	font-size: 0.85vw;
+	color: #aaaaaa;
+	}
+	table td:nth-child(7)::before {
+	content: "Validade: ";
+	color: #777777;
+	}
+	table td:nth-child(8) {
+	order: 7;
+	font-size: 0.85vw;
+	color: #aaaaaa;
+	}
+	table td:nth-child(8)::before {
+	content: "Fabricação: ";
+	color: #777777;
+	}
+	@media (max-width: 1024px) {
+	table tbody {
+	grid-template-columns: repeat(2, 1fr);
+	gap: 3vw;
+	}
+	#formulario {
+	grid-template-columns: 1fr;
+	width: 85vw;
+	}
+	#formulario > *:not(h1):not(h2) {
+	grid-column: 1;
+	}
+	}
+	@media (max-width: 600px) {
+	table tbody {
+	grid-template-columns: 1fr;
+	}
+	}
+	/* ========================================================
+	PÁGINA INTERNA DE DETALHES DO PRODUTO (/produto/1)
+	======================================================== */
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) {
+	width: 75vw;
+	max-width: 950px;
+	margin: 6vh auto;
+	background-color: var(--card-escuro);
+	border: 1px solid rgba(191, 163, 128, 0.4);
+	border-radius: 16px;
+	padding: 4vh 3.5vw;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 3vw;
+	}
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) h1,
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) h2 {
+	width: 100%;
+	font-size: 2vw;
+	font-weight: bold;
+	color: var(--botao);
+	justify-content: flex-start;
+	text-align: left;
+	padding-bottom: 1.5vh;
+	margin-bottom: 1vh;
+	border-bottom: 1px solid rgba(191, 163, 128, 0.25);
+	}
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) img {
+	width: 42%;
+	max-height: 45vh;
+	object-fit: contain;
+	background-color: #ffffff;
+	padding: 2vh;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+	}
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) > div,
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) > p,
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) > ul {
+	flex: 1;
+	min-width: 45%;
+	font-size: 1.1vw;
+	line-height: 2.2;
+	color: #e6e6e6;
+	list-style: none;
+	}
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) a,
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) button {
+	display: inline-block;
+	margin-top: 2vh;
+	margin-right: 1vw;
+	padding: 1vh 1.8vw;
+	background-color: var(--botao);
+	color: var(--letrabotao);
+	font-weight: bold;
+	font-size: 1vw;
+	text-decoration: none;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+	}
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) a:hover,
+	section:not(.topo):not(:has(table)):not(:has(#formulario)) button:hover {
+	background-color: var(--botao-hover);
+	transform: translateY(-2px);
+	}
