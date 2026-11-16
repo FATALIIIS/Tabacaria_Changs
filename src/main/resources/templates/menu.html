@@ -15,6 +15,10 @@
 					</form>
 				</div>
 				<div id="botoes">
+					<ul class="nav" th:if="${session.clientes==null}">
+						<li><a th:href="@{/cliente/login}">Login</a></li>
+						<li><a th:href="@{/cliente/cadastrar}">Cadastrar</a></li>
+					</ul>
 					<ul class="nav" th:if="${session.admin==null}">
 						<li><a th:href="@{/login}">ADM</a></li>
 					</ul>
