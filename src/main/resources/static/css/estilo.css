@@ -646,9 +646,7 @@ table td:nth-child(9):has(img) {
 	grid-template-columns: 1fr;
 	}
 	}
-	/* ========================================================
-	PÁGINA INTERNA DE DETALHES DO PRODUTO (/produto/1)
-	======================================================== */
+	
 	section:not(.topo):not(:has(table)):not(:has(#formulario)) {
 	width: 75vw;
 	max-width: 950px;
@@ -717,3 +715,4 @@ table td:nth-child(9):has(img) {
 	background-color: var(--botao-hover);
 	transform: translateY(-2px);
 	}
+	
