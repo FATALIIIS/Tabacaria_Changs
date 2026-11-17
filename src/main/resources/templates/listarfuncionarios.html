@@ -6,7 +6,7 @@
 		<section th:replace="~{menu :: topo}"></section>
 		<h2 th:if="${total<=0}">Não há funcionários cadastrados!</h2>
 		<div th:if="${total>0}">
-			<table>
+			<table class="funcionarios">
 				<tr>
 					<th>Código do Funcionário</th>
 					<th>Nome</th>

@@ -1,4 +1,4 @@
-* {
+	* {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
@@ -626,6 +626,28 @@ table td:nth-child(9):has(img) {
 	}
 	table td:nth-child(8)::before {
 	content: "Fabricação: ";
+	color: #777777;
+	}
+	table.funcionarios td:nth-child(6)::before {
+	content: "Telefone: ";
+	color: #777777;
+	}
+	table td:nth-child(7) {
+	order: 6;
+	font-size: 0.85vw;
+	color: #aaaaaa;
+	}
+	table.funcionarios td:nth-child(7)::before {
+	content: "Email: ";
+	color: #777777;
+	}
+	table td:nth-child(8) {
+	order: 7;
+	font-size: 0.85vw;
+	color: #aaaaaa;
+	}
+	table.funcionarios td:nth-child(8)::before {
+	content: "Data de Nascimento: ";
 	color: #777777;
 	}
 	@media (max-width: 1024px) {

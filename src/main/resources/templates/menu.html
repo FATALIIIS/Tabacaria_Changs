@@ -15,15 +15,13 @@
 					</form>
 				</div>
 				<div id="botoes">
-					<ul class="nav" th:if="${session.clientes==null}">
+					<ul class="nav" th:if="${session.cliente==null and session.admin==null}">
 						<li><a th:href="@{/cliente/login}">Login</a></li>
-						<li><a th:href="@{/cliente/cadastrar}">Cadastrar</a></li>
-					</ul>
-					<ul class="nav" th:if="${session.admin==null}">
+						<li><a th:href="@{/clientes/cadastrar}">Cadastrar</a></li>
 						<li><a th:href="@{/login}">ADM</a></li>
 						<li><a th:href="@{/memorial}">Memorial</a></li>
 					</ul>
-					<ul class="nav" th:if="${session.admin!=null}">
+					<ul class="nav" th:if="${session.admin!=null and session.cliente==null}">
 						<span id="welcome" th:text="${'Olá '+session.admin.nome}">Usuário</span>
 						&nbsp;
 						<li>Produtos
@@ -41,6 +39,19 @@
 							</ol>
 						</li>
 						<li><a th:href="@{/logoff}">Sair</a></li>
+					</ul>
+					<ul class="nav" th:if="${session.cliente!=null and session.admin==null}">
+						<span id="welcome" th:text="${'Olá '+session.cliente.nome}">Usuário</span>
+						&nbsp;
+						<li>Meus Dados
+							<ol>
+								<li><a th:href="@{/clientes/alterar/{id}(id=${session.cliente.codCli})}">Alterar Dados</a></li>
+								<li><a th:href="@{/clientes/excluir/{id}(id=${session.cliente.codCli})}">Excluir Conta</a></li>
+							</ol>
+						</li>
+						<li>Carrinho
+						</li>
+						<li><a th:href="@{/logoffcliente}">Sair</a></li>
 					</ul>
 				</div>					
 			</div>

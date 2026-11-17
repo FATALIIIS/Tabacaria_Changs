@@ -50,6 +50,7 @@ public class ClientesService {
 		clientes.setEndereco(dadosNovos.getEndereco());
 		clientes.setDataNasci(dadosNovos.getDataNasci());
 		clientes.setSenha(dadosNovos.getSenha());
+		clientes.criptografa();
 		clientes.setSexo(dadosNovos.getSexo());
 		clientes.setLogin(dadosNovos.getLogin());
 		clientes.setNome(dadosNovos.getNome());
