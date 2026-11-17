@@ -41,8 +41,10 @@ public class ClientesController {
 		return "cadastrarclientes";
 	}
 	
+	
 	@PostMapping("/clientes/cadastrar")
 	public String cadastrar(Model model, Clientes clientes) {
+			clientes.criptografa();
 			boolean resultado=ClientesService.salvar(clientes);
 			String resposta=(resultado)?"Cadastrado com sucesso!":"Erro na tentativa de cadastrar!";
 			model.addAttribute("resposta",resposta);
@@ -50,12 +52,13 @@ public class ClientesController {
 		return "cadastrarclientes";
 	}
 	
-	@GetMapping("/clientes/alterar")
-	public String alterar(@RequestParam(name="codCli") Integer codCli,
+	@GetMapping("/clientes/alterar/{id}")
+	public String alterar(@PathVariable("id") Integer codCli,
 			Model model) {
+		
 		Clientes clientes=ClientesService.buscarPorCodigo(codCli);
 		model.addAttribute("clientes",clientes);
-		return "alterarfuncionarios";
+		return "alterarclientes";
 	}
 	
 	@PostMapping("/clientes/alterar")
@@ -78,17 +81,16 @@ public class ClientesController {
 		return "alterarclientes";
 	}
 	
-	@GetMapping("/clientes/excluir")
-	public String excluir(
-			@RequestParam(name = "codCli",required=true) Integer codCli,
+	@GetMapping("/clientes/excluir/{id}")
+	public String excluir(@PathVariable("id") Integer codCli,
 			Model model) {
 		Clientes clientes=ClientesService.buscarPorCodigo(codCli);
 		model.addAttribute("clientes", clientes);
 		return "excluirclientes";
 	}
 	
-	@PostMapping("/clientes/excluir")
-	public String confirmaExcluir(@RequestParam("codCli") Integer codCli, Model model) {
+	@PostMapping("/clientes/excluir/{id}")
+	public String confirmaExcluir(@PathVariable("id") Integer codCli, Model model) {
 		boolean resultado=ClientesService.delete(codCli);
 		if(resultado) {
 			model.addAttribute("resposta", true);
@@ -109,11 +111,16 @@ public class ClientesController {
 		Clientes clientesAutenticado=ClientesService.autenticar(clientes.getLogin(),clientes.getSenha());
 		
 		if(clientesAutenticado!=null) {
-			session.setAttribute("clientes", clientesAutenticado);
+			session.setAttribute("cliente", clientesAutenticado);
 			model.addAttribute("resposta",true);
 		}else {
 			model.addAttribute("resposta",false);
 		}
 		return "clienteslogin";
+	}
+	@GetMapping("/logoffcliente")
+	public String sair(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

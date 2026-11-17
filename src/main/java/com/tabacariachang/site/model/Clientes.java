@@ -2,6 +2,9 @@ package com.tabacariachang.site.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,13 +26,14 @@ public class Clientes {
 	@Column(name = "endereco", nullable = false, length = 50)
 	private String endereco; 
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "dataNasci", nullable = false)
 	private LocalDate dataNasci;
 	
 	@Column(name = "senha", nullable = false, length = 80)
 	private String senha;
 	
-	@Column(name = "sexo", nullable = false, length = 1)
+	@Column(name = "sexo", nullable = false, length = 10)
 	private String sexo;
 	
 	@Column(name = "login", nullable = false, length = 20)
@@ -127,5 +131,8 @@ public class Clientes {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+	public void criptografa() {
+		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+		this.senha=encoder.encode(this.senha);
+	}
 }
