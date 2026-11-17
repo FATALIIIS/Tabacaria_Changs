@@ -49,4 +49,8 @@ public class HomeController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	@GetMapping("/memorial")
+	public String homenagem() {
+		return "memorial";
+	}
 }

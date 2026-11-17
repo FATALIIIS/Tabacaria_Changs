@@ -21,6 +21,7 @@
 					</ul>
 					<ul class="nav" th:if="${session.admin==null}">
 						<li><a th:href="@{/login}">ADM</a></li>
+						<li><a th:href="@{/memorial}">Memorial</a></li>
 					</ul>
 					<ul class="nav" th:if="${session.admin!=null}">
 						<span id="welcome" th:text="${'Olá '+session.admin.nome}">Usuário</span>
